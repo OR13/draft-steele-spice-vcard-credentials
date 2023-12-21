@@ -54,13 +54,11 @@ informative:
     target: https://www.w3.org/TR/vc-data-model-2.0/
     date: false
 
-
-
 --- abstract
 
 vCard is a file format for digital business cards.
-This document enables {{-VCARD}} to be used as a transport for digital credentials.
 
+This document enables vCards to be used as a transport for digital credentials.
 
 --- middle
 
@@ -72,11 +70,11 @@ The public key cryptographic operations are a foundational building block for bu
 
 Applications supporting protocols such as OAUTH, OpenSSH, and OpenPGP rely on different public key formats.
 
-To support interoperability public key formats are registered at {{-MEDIA-TYPES}}.
+To enable interoperability, useful public key formats have media types registered with IANA {{-MEDIA-TYPES}}.
 
 A common challenge in working with applications that require key management is obtaining cryptographic keys.
 
-This document describes how {{-VCARD}} can address this challenge, for keys that are embedded by value or by reference in digital business cards.
+vCards as decribed in {{-VCARD}} can address this challenge, for keys that are embedded by value or by reference in digital business cards.
 
 # Terminology
 
@@ -94,13 +92,13 @@ Anyone who can see a QR Code can access the data encoded in it.
 
 Sensitive plaintext data MUST NOT be encoded in vCARD QR Codes.
 
-Encryption formats, such as {{-JWE}} MAY be be used to secure confidential credentials.
+Encryption formats, such as JSON Web Encryption as decribed in {{-JWE}} MAY be used to secure confidential credentials.
 
-QR Codes can be removed, altered, or replaced on physical products.
+QR Codes can be removed, altered, or replaced on physical products, and in video streams.
 
 Additional security checks MUST be performed before accepting any data transported by QR Codes.
 
-For example, confirming serial numbers or other presented identifiers identifiers are consistent with the credentials presented through the vCard QR Code.
+For example, confirming serial numbers or other presented identifiers are consistent with the claims in credentials presented through the vCard QR Code.
 
 ~~~aasvg
  ◌ ◌ ◌ ◌ ◌ ◌ ◌ * ◌ * ◌ ◌ * ◌ * ◌ ◌ * * ◌ * * ◌ * * ◌ ◌ * * ◌ * ◌ ◌ ◌ * * * ◌ * * ◌ ◌ ◌ * ◌ ◌ ◌ ◌ * * * ◌ ◌ * ◌ ◌ ◌ ◌ ◌ ◌ ◌
@@ -174,11 +172,11 @@ key transparency can mitigate threats related to duplicity, censorship, and cons
 
 In the context of this document, key references are URIs.
 
-Any key transparency system capable of deliverying key material for a {{-URI}} MAY be used.
+Any key transparency system capable of deliverying key material for a URI as described in {{-URI}} MAY be used.
 
 ## Public Keys
 
-Section 6.8.1 of {{-VCARD}} defines how to embed a public key in a vCARD.
+Section 6.8.1 of {{-VCARD}} defines how to embed a key in a vCARD.
 
 The following informative example is provided:
 
@@ -200,13 +198,11 @@ END:VCARD
 ~~~
 {: #vcard-public-keys align="left" title="A vCard containing public keys"}
 
-In this example, the fields "CATEGORIES", "UID" and "FN" are not integrity protected, software systems MAY leverage this property to alter these values, will preserving the integrity protected values.
+In this example, the same credentials are encoded by value and by reference, and the fields "CATEGORIES", "UID" and "FN" are not integrity protected, software systems MAY leverage this property to alter these values, will preserving the integrity protected values.
 
-The credentials are encoded by value or by reference, in this example the same key is expressed encoded by value and encoded by reference using a URI built from a thumbprint using {{-JWK-THUMBPRINT-URI}}.
+The credential encoded by reference is using a URI built from a thumbprint using {{-JWK-THUMBPRINT-URI}}.
 
 ## Digital Credentials
-
-Section 6.8.1 of {{-VCARD}} defines how to embed a public key in a vCARD.
 
 A verifiable credential, as defined in {{-SD-JWT}} and {{-SD-JWT-VC}}, is a special kind of public key, that a holder can prove possession of in order to convince a verifier, that an issuer has asserted attributes about a subject.
 
@@ -256,9 +252,9 @@ END:VCARD
 
 In this example, all fields except for "KEY" are not protected.
 
-KEY encodes a verifiable credential expressing a university degree.
+KEY encodes a verifiable credential expressing a hypothetical university degree.
 
-Public credentials are often shared on social, or professional networks, however, they may still contain sensitive information which SHOULD NOT be disclosed such as student identification numbers, or other details about the recipient.
+Public credentials are often shared on social, or professional networks, however, they may still contain sensitive information which SHOULD NOT be disclosed such as student identification numbers, or other details about the credential subject.
 
 This example is for demonstration purposes only.
 
