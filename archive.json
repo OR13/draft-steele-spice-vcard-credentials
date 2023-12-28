@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-26T00:15:25.107164+00:00",
+  "timestamp": "2023-12-28T00:15:43.238235+00:00",
   "repo": "OR13/draft-steele-spice-vcard-credentials",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOK8arR856lOaO",
+      "title": "Line wrap examples",
+      "url": "https://github.com/OR13/draft-steele-spice-vcard-credentials/issues/1",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "- [ ] Remove the QR Code or make it fit in 71 characters of text... (unlikely).\r\n- [ ] Line wrap the vcf text text examples",
+      "createdAt": "2023-12-26T17:20:36Z",
+      "updatedAt": "2023-12-26T17:20:36Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
